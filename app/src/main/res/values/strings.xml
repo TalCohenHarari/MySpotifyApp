@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MySpotify</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="all_songs">All Songs</string>
+    <string name="all_artists">All Artists</string>
+    <string name="remove_from_favorite">הסרה מהמועדפים</string>
+    <string name="remove_this_song_from_your_favorite">מחק שיר זה מרשימת השירים המועדפים עלייך</string>
+</resources>

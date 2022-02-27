@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_color"
+    app:layoutDescription="@xml/fragment_favorite_songs_list_scene"
+    tools:context=".presentation.ui.fragments.favoriteSongsList.FavoriteSongsListFragment">
+
+    <ImageView
+        android:id="@+id/headerImage_imgV"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_music_favorite_list"
+        app:layout_constraintBottom_toTopOf="@+id/songs_list_recyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <View
+        android:id="@+id/image_shadow_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#22252424"
+        app:layout_constraintBottom_toBottomOf="@+id/headerImage_imgV"
+        app:layout_constraintEnd_toEndOf="@+id/headerImage_imgV"
+        app:layout_constraintStart_toStartOf="@+id/headerImage_imgV"
+        app:layout_constraintTop_toTopOf="@+id/headerImage_imgV" />
+
+    <TextView
+        android:id="@+id/title_Tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="Favorite List"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/headerImage_imgV"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/primary_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/title_Tv_small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Favorite List"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/headerImage_imgV" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/songs_list_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/primary_color"
+        android:clipToPadding="false"
+        android:fitsSystemWindows="false"
+        android:paddingBottom="120dp"
+        android:paddingTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerImage_imgV">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_circle_black"
+        app:layout_constraintBottom_toBottomOf="@+id/play_imgV"
+        app:layout_constraintEnd_toEndOf="@+id/play_imgV"
+        app:layout_constraintStart_toStartOf="@+id/play_imgV"
+        app:layout_constraintTop_toTopOf="@+id/play_imgV" />
+
+    <ImageView
+        android:id="@+id/play_imgV"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="60dp"
+        android:elevation="7dp"
+        android:src="@drawable/ic_play_circle_green"
+        app:layout_constraintBottom_toTopOf="@+id/songs_list_recyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/songs_list_recyclerView" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/swipe_song_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <ImageView
+        android:id="@+id/black_bottom_gradient_imgV"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/bottom_black_gradient"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/swipe_song_recyclerView" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

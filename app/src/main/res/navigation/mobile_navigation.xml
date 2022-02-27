@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_artistsListFragment">
+    <fragment
+        android:id="@+id/nav_artistsListFragment"
+        android:name="com.myspotify.presentation.ui.fragments.artistsList.ArtistsListFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_artists_list" >
+        <action
+            android:id="@+id/action_nav_artistsListFragment_to_nav_favoriteSongsListFragment"
+            app:destination="@id/nav_favoriteSongsListFragment" />
+        <action
+            android:id="@+id/action_nav_artistsListFragment_to_nav_artistSongsListFragment"
+            app:destination="@id/nav_artistSongsListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_songDetailsFragment"
+        android:name="com.myspotify.presentation.ui.fragments.songDetails.SongDetailsFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_song_details" >
+        <argument
+            android:name="position"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_favoriteSongsListFragment"
+        android:name="com.myspotify.presentation.ui.fragments.favoriteSongsList.FavoriteSongsListFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_favorite_songs_list" />
+    <fragment
+        android:id="@+id/nav_artistSongsListFragment"
+        android:name="com.myspotify.presentation.ui.fragments.artistSongsList.ArtistSongsListFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_artist_songs_list" >
+        <argument
+            android:name="artistId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
+</navigation>

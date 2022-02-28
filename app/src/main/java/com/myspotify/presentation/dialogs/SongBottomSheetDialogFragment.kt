@@ -20,9 +20,8 @@ class SongBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
     companion object{
         fun newInstance(isFavorite:Boolean): SongBottomSheetDialogFragment {
-            val args = Bundle()
             val dialogFragment = SongBottomSheetDialogFragment()
-            dialogFragment.arguments = args
+            dialogFragment.arguments = Bundle()
             dialogFragment.isFavorite = isFavorite
             return dialogFragment
         }
@@ -31,7 +30,7 @@ class SongBottomSheetDialogFragment : BottomSheetDialogFragment() {
     fun interface OnActionClickListener { fun onClick() }
     fun setOnClickListener(listener: OnActionClickListener) { this.listener = listener }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = BottomSheetDialogFragmentSongBinding.inflate(inflater, container, false)
         binding.root.context.setTheme(R.style.BottomSheetDialogTheme)
         if(isFavorite){

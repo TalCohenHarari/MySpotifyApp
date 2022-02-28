@@ -27,7 +27,7 @@ class ArtistSongsListFragment : Fragment() {
     private lateinit var mContext: Context
     private lateinit var artistSongsRecyclerView: RecyclerView
     private lateinit var artistSongsListAdapter: ArtistsSongsListAdapter
-    private lateinit var itemBottomSheetDialog: SongBottomSheetDialogFragment
+    private var itemBottomSheetDialog: SongBottomSheetDialogFragment? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentArtistSongsListBinding.inflate(inflater, container, false)
@@ -74,10 +74,15 @@ class ArtistSongsListFragment : Fragment() {
     private fun openSongBottomSheetDialogFragment(songId: Int) {
         val songDB = artistSongsListViewModel.getSongById(songId)
         itemBottomSheetDialog = SongBottomSheetDialogFragment.newInstance(songDB!!.isFavorite)
-        itemBottomSheetDialog.setOnClickListener{
+        itemBottomSheetDialog!!.setOnClickListener{
             artistSongsListViewModel.updateSong(songDB)
-            itemBottomSheetDialog.dismiss()
+            itemBottomSheetDialog!!.dismiss()
         }
-        itemBottomSheetDialog.show(requireActivity().supportFragmentManager,"SongBottomSheetDialogFragment")
+        itemBottomSheetDialog!!.show(requireActivity().supportFragmentManager,"SongBottomSheetDialogFragment")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        itemBottomSheetDialog?.dismiss()
     }
 }

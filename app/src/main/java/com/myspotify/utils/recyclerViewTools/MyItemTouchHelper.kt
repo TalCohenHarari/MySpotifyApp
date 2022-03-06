@@ -1,4 +1,4 @@
-package com.myspotify.utils
+package com.myspotify.utils.recyclerViewTools
 
 import android.graphics.Color
 import androidx.core.content.ContextCompat
@@ -20,7 +20,7 @@ class MyItemTouchHelper(private var itemAdapter : ItemTouchHelperAdapter): ItemT
     //Called when we the item is realest
     override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder) {
         super.clearView(recyclerView, viewHolder)
-        viewHolder.itemView.setBackgroundColor(ContextCompat.getColor(viewHolder.itemView.context, R.color.primary_color))
+        viewHolder.itemView.setBackgroundColor(ContextCompat.getColor(viewHolder.itemView.context, R.color.colorPrimary))
     }
 
     //Called when we the item is selected and dragged

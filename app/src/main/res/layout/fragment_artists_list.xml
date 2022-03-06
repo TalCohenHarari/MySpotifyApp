@@ -5,14 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_color"
+    android:background="?attr/colorPrimary"
     tools:context=".presentation.ui.fragments.artistsList.ArtistsListFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="@color/primary_color"
+        android:background="?attr/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="@string/all_artists"
-        android:textColor="@color/white"
+        android:textColor="?attr/textColorPrimary"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
@@ -53,7 +53,7 @@
         android:id="@+id/artists_list_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/primary_color"
+        android:background="?attr/colorPrimary"
         android:clipToPadding="false"
         android:fitsSystemWindows="false"
         android:paddingTop="20dp"

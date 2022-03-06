@@ -26,21 +26,17 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideApi():MySpotifyApi {
-        return Retrofit.Builder()
+    fun provideApi():MySpotifyApi = Retrofit.Builder()
             .baseUrl(Constants.API_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(MySpotifyApi::class.java)
-    }
 
     @Singleton
     @Provides
-    fun provideAppDataBase(@ApplicationContext applicationContext: Context):AppDatabase {
-        return Room.databaseBuilder(
+    fun provideAppDataBase(@ApplicationContext applicationContext: Context):AppDatabase = Room.databaseBuilder(
             applicationContext,
             AppDatabase::class.java,
             "mySpotify.db"
         ).build()
-    }
 }

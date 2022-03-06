@@ -1,4 +1,4 @@
-package com.myspotify.utils
+package com.myspotify.utils.recyclerViewTools
 
 interface ItemTouchHelperAdapter {
     fun onItemMove(fromPosition: Int, toPosition: Int)

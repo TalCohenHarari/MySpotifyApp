@@ -11,23 +11,30 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.myspotify.R
 import com.myspotify.data.local.entity.SongDB
-import com.myspotify.utils.ItemTouchHelperAdapter
 import java.util.*
 import android.view.GestureDetector
 import android.view.MotionEvent
-import com.myspotify.utils.Constants
-import com.myspotify.utils.Utils
+import com.myspotify.utils.recyclerViewTools.ItemTouchHelperAdapter
 
 
-class FavoriteSongsListAdapter(private val mContext: Context): RecyclerView.Adapter<FavoriteSongsListAdapter.SongsListViewHolder>(), ItemTouchHelperAdapter {
+class FavoriteSongsListAdapter(private val mContext: Context): RecyclerView.Adapter<FavoriteSongsListAdapter.SongsListViewHolder>(),
+    ItemTouchHelperAdapter {
 
     //Params
-    var favoriteSongsList = ArrayList<SongDB>()
+    private var favoriteSongsList = ArrayList<SongDB>()
+    fun getFavoriteSongsList():ArrayList<SongDB>{return favoriteSongsList}
+
     var isSomePositionChanged = false
 
     //Click move and swipe items
     private lateinit var itemTouchHelper: ItemTouchHelper
     private lateinit var listener: OnItemListener
+
+    fun notifyNewList(data: List<SongDB>) {
+        favoriteSongsList.clear()
+        favoriteSongsList.addAll(data)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongsListViewHolder {
         val view = LayoutInflater.from(mContext).inflate(R.layout.row_songs_list_2,parent,  false)
@@ -35,13 +42,18 @@ class FavoriteSongsListAdapter(private val mContext: Context): RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: SongsListViewHolder, position: Int) {
-        holder.songNameTv.text = Utils.getStringWithValidLength(favoriteSongsList[position].songName,Constants.MAX_LENGTH_SONG_NAME)
-        holder.artistNameTv.text = Utils.getStringWithValidLength(favoriteSongsList[position].artistName,Constants.MAX_LENGTH_ARTIST_NAME)
+        holder.songNameTv.text = favoriteSongsList[position].songName
+        holder.artistNameTv.text = favoriteSongsList[position].artistName
         Glide.with(mContext)
             .load(favoriteSongsList[position].artistImageUrl)
             .placeholder(R.drawable.bg_music_default)
             .centerCrop()
             .into(holder.imageImgV)
+
+        holder.favoriteImgV.visibility = View.VISIBLE
+        holder.optionsImgV.setOnClickListener {
+            listener.onClick(favoriteSongsList[position].id)
+        }
     }
 
     override fun getItemCount(): Int { return favoriteSongsList.size }
@@ -55,6 +67,7 @@ class FavoriteSongsListAdapter(private val mContext: Context): RecyclerView.Adap
         val songNameTv: TextView = itemView.findViewById(R.id.songs_list_row_song_name_tv)
         val artistNameTv: TextView = itemView.findViewById(R.id.songs_list_row_artist_name_tv)
         val imageImgV: ImageView = itemView.findViewById(R.id.songs_list_row_image_imgV)
+        val favoriteImgV: ImageView = itemView.findViewById(R.id.songs_list_row_favorite_imgV)
         val shadowView: View = itemView.findViewById(R.id.songs_list_row_shadow_view)
         val optionsImgV: ImageView = itemView.findViewById(R.id.songs_list_row_options_imgV)
 
@@ -72,7 +85,6 @@ class FavoriteSongsListAdapter(private val mContext: Context): RecyclerView.Adap
         }
         override fun onShowPress(e: MotionEvent?) {}
         override fun onSingleTapUp(e: MotionEvent?): Boolean {
-            listener.onClick(songsList[adapterPosition].id)
             return true
         }
         override fun onScroll(e1: MotionEvent?, e2: MotionEvent?, distanceX: Float, distanceY: Float, ): Boolean {
@@ -91,13 +103,12 @@ class FavoriteSongsListAdapter(private val mContext: Context): RecyclerView.Adap
         this.itemTouchHelper = itemTouchHelper
     }
     override fun onItemMove(fromPosition: Int, toPosition: Int) {
-        var songDBFrom = favoriteSongsList[fromPosition]
-        favoriteSongsList.remove(songDBFrom)
-        favoriteSongsList.add(toPosition,songDBFrom)
+
+        Collections.swap(favoriteSongsList, fromPosition,toPosition)
         isSomePositionChanged = true
 
-        for (i in 0 until favoriteSongsList.size) {
-            favoriteSongsList[i].positionOnList = i
+        favoriteSongsList.forEachIndexed{ i , songDB ->
+            songDB.positionOnList = i
         }
 
         notifyItemMoved(fromPosition,toPosition)

@@ -41,10 +41,12 @@
             android:id="@+id/title_Tv_small"
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="wrap_content"
-            android:layout_height="0.1dp"
+            android:layout_height="wrap_content"
             motion:layout_constraintBottom_toBottomOf="@+id/toolbar"
-            motion:layout_constraintTop_toTopOf="@+id/headerImage_imgV"
-            motion:layout_constraintStart_toStartOf="parent" />
+            motion:layout_constraintTop_toTopOf="@+id/toolbar"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:visibility="invisible"
+            android:layout_marginTop="32dp" />
     </ConstraintSet>
     <ConstraintSet android:id="@+id/end">
         <Constraint
@@ -86,7 +88,16 @@
             motion:layout_constraintBottom_toBottomOf="@+id/toolbar"
             motion:layout_constraintTop_toTopOf="@+id/toolbar"
             motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="8dp" />
+            android:layout_marginTop="32dp" />
+        <Constraint
+            android:id="@+id/title_Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="@+id/headerImage_imgV"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="16dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:visibility="invisible" />
     </ConstraintSet>
 </MotionScene>
 

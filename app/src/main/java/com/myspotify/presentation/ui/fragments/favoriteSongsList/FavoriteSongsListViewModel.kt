@@ -1,7 +1,6 @@
 package com.myspotify.presentation.ui.fragments.favoriteSongsList
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.myspotify.data.local.entity.SongDB
@@ -25,4 +24,19 @@ class FavoriteSongsListViewModel @Inject constructor(private val songsRepository
         }
     }
 
+    fun getSongById(songId: Int): SongDB? {
+
+        favoriteSongsList.value?.forEach { songDB ->
+            if(songDB.id == songId) return songDB
+        }
+
+        return null
+    }
+
+    fun updateSong(songDB: SongDB) {
+        viewModelScope.launch {
+            songDB.isFavorite = !songDB.isFavorite
+            songsRepository.updateSong(songDB)
+        }
+    }
 }

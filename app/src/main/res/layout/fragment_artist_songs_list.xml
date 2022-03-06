@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_color"
+    android:background="@color/colorPrimary"
     app:layoutDescription="@xml/fragment_artist_songs_list_scene"
     tools:context=".presentation.ui.fragments.artistSongsList.ArtistSongsListFragment">
 
@@ -46,7 +46,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="@color/primary_color"
+        android:background="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -69,7 +69,7 @@
         android:id="@+id/artist_songs_list_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/primary_color"
+        android:background="@color/colorPrimary"
         android:clipToPadding="false"
         android:fitsSystemWindows="false"
         android:paddingTop="20dp"

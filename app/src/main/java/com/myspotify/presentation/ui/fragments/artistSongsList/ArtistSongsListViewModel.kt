@@ -21,11 +21,11 @@ class ArtistSongsListViewModel @Inject constructor(private val songsRepository :
     }
 
     fun getSongById(songId: Int): SongDB? {
-        for (songDB in artistSongsList.value!!){
-            if(songDB.id == songId){
-                return songDB
-            }
+
+        artistSongsList.value?.forEach { songDB ->
+            if(songDB.id == songId) return songDB
         }
+      
         return null
     }
 

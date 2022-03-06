@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.app.ActivityCompat.recreate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -21,7 +23,6 @@ class ArtistsListFragment : Fragment() {
 
     private val songsListViewModel: ArtistsListViewModel by viewModels()
     private var binding: FragmentArtistsListBinding by autoCleared()
-    private lateinit var mContext: Context
     private lateinit var artistsRecyclerView: RecyclerView
     private lateinit var artistsListAdapter: ArtistsListAdapter
 
@@ -32,28 +33,29 @@ class ArtistsListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mContext = requireContext()
         initRecyclerView()
+        subscribeToObservers()
         listeners()
     }
 
     private fun initRecyclerView(){
-
         artistsRecyclerView = binding.artistsListRecyclerView
         artistsRecyclerView.setHasFixedSize(true)
-        val manager = GridLayoutManager(mContext, 2)
+        val manager = GridLayoutManager(context, 2)
         artistsRecyclerView.layoutManager = manager
-        artistsListAdapter = ArtistsListAdapter(mContext)
+        artistsListAdapter = ArtistsListAdapter(context!!)
         artistsRecyclerView.adapter = artistsListAdapter
     }
 
-    private fun listeners() {
-
+    private fun subscribeToObservers() {
         songsListViewModel.getSongsListFromDB().observe(viewLifecycleOwner, { data ->
             artistsListAdapter.songsList.clear()
             artistsListAdapter.songsList.addAll(data)
             artistsListAdapter.notifyDataSetChanged()
         })
+    }
+
+    private fun listeners() {
 
         artistsListAdapter.setOnClickListener { artistId ->
             val action = ArtistsListFragmentDirections.actionNavArtistsListFragmentToNavArtistSongsListFragment(artistId)

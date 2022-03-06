@@ -6,6 +6,7 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/MySpotifyApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.15185185185185185" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MySpotifyApp/app/src/main/res/drawable-v24/ic_library_music.xml" value="0.2675925925925926" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MySpotifyApp/app/src/main/res/drawable-v24/ic_library_music_green.xml" value="0.3828125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MySpotifyApp/app/src/main/res/drawable/black_gradient.xml" value="0.3125" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MySpotifyApp/app/src/main/res/drawable/bottom_black_gradient.xml" value="0.3828125" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MySpotifyApp/app/src/main/res/drawable/bottom_black_gradient_for_artist_image.xml" value="0.3769230769230769" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MySpotifyApp/app/src/main/res/drawable/ic_baseline_library_music_24.xml" value="0.15185185185185185" />
@@ -26,16 +27,20 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/MySpotifyApp/app/src/main/res/drawable/ic_notifications_black.xml" value="0.3828125" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MySpotifyApp/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.15185185185185185" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MySpotifyApp/app/src/main/res/drawable/ic_play_circle_green.xml" value="0.3828125" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MySpotifyApp/app/src/main/res/drawable/ic_share_black.xml" value="0.3385416666666667" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MySpotifyApp/app/src/main/res/drawable/ic_share_white.xml" value="0.32447916666666665" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MySpotifyApp/app/src/main/res/drawable/round_corrners_shape_black.xml" value="0.3671875" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MySpotifyApp/app/src/main/res/drawable/top_round_corners.xml" value="0.3671875" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MySpotifyApp/app/src/main/res/drawable/top_round_corners_gray.xml" value="0.24074074074074073" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/MySpotifyApp/app/src/main/res/layout/activity_main.xml" value="0.2545289855072464" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MySpotifyApp/app/src/main/res/layout/activity_main.xml" value="0.21" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MySpotifyApp/app/src/main/res/layout/bottom_sheet_dialog_fragment_song.xml" value="0.33" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MySpotifyApp/app/src/main/res/layout/fragment_artist_songs_list.xml" value="0.25" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MySpotifyApp/app/src/main/res/layout/fragment_artists_list.xml" value="0.35104166666666664" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MySpotifyApp/app/src/main/res/layout/fragment_favorite_songs_list.xml" value="0.3380208333333333" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MySpotifyApp/app/src/main/res/layout/fragment_song_details.xml" value="0.25" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MySpotifyApp/app/src/main/res/layout/fragment_songs_list.xml" value="0.33" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MySpotifyApp/app/src/main/res/layout/notification_big.xml" value="0.33" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MySpotifyApp/app/src/main/res/layout/notification_small.xml" value="0.5" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MySpotifyApp/app/src/main/res/layout/row_artists_list.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MySpotifyApp/app/src/main/res/layout/row_songs_list.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MySpotifyApp/app/src/main/res/layout/row_songs_list_2.xml" value="0.36666666666666664" />
@@ -54,7 +59,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.33" />
+        <option name="scale" value="0.2545289855072464" />
       </ProjectState>
     </option>
   </component>

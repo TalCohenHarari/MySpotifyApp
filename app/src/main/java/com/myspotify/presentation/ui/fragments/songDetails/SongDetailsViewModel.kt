@@ -13,7 +13,7 @@ import javax.inject.Inject
 @HiltViewModel
 class SongDetailsViewModel @Inject constructor(private val songsRepository : SongsRepository): ViewModel() {
 
-    lateinit var  songsList : LiveData<List<SongDB>>
+     private lateinit var  songsList : LiveData<List<SongDB>>
 
     init {
         viewModelScope.launch {

@@ -10,17 +10,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.myspotify.R
 import com.myspotify.data.local.entity.SongDB
-import com.myspotify.utils.Constants
-import com.myspotify.utils.Constants.MAX_LENGTH_ARTIST_NAME
-import com.myspotify.utils.Constants.MAX_LENGTH_SONG_NAME
-import com.myspotify.utils.Utils
 import java.util.*
 
 class SwipeSongAdapter(private val mContext: Context): RecyclerView.Adapter<SwipeSongAdapter.SongsListViewHolder>() {
 
     //Params
-    var songsList = ArrayList<SongDB>()
+    private var songsList = ArrayList<SongDB>()
     private lateinit var listener: OnItemClickListener
+
+    fun notifyNewList(data: List<SongDB>) {
+        songsList.clear()
+        songsList.addAll(data)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongsListViewHolder {
         val view = LayoutInflater.from(mContext).inflate(R.layout.row_swipe_song,parent,  false)
@@ -28,8 +30,8 @@ class SwipeSongAdapter(private val mContext: Context): RecyclerView.Adapter<Swip
     }
 
     override fun onBindViewHolder(holder: SongsListViewHolder, position: Int) {
-        holder.songNameTv.text = Utils.getStringWithValidLength(songsList[position].songName, MAX_LENGTH_SONG_NAME)
-        holder.artistNameTv.text = Utils.getStringWithValidLength(songsList[position].artistName, MAX_LENGTH_ARTIST_NAME)
+        holder.songNameTv.text = songsList[position].songName
+        holder.artistNameTv.text = songsList[position].artistName
         Glide.with(mContext)
             .load(songsList[position].artistImageUrl)
             .placeholder(R.drawable.bg_music_default)
@@ -56,6 +58,4 @@ class SwipeSongAdapter(private val mContext: Context): RecyclerView.Adapter<Swip
         val imageImgV: ImageView = itemView.findViewById(R.id.swipe_song_row_image_imgV)
         val playPauseImgV: ImageView = itemView.findViewById(R.id.swipe_song_row_play_pause_imgV)
     }
-
-
 }

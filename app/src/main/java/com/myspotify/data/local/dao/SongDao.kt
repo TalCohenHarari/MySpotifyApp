@@ -22,11 +22,11 @@ interface SongDao {
     fun getById(songId: Int): SongDB?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(song: SongDB)
+    suspend fun insert(song: SongDB)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll( songs: List<SongDB>)
+    suspend fun insertAll( songs: List<SongDB>)
 
     @Delete
-    fun delete(song: SongDB)
+    suspend fun delete(song: SongDB)
 }

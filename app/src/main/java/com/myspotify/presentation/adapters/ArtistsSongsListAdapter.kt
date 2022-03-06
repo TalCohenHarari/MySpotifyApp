@@ -27,8 +27,8 @@ class ArtistsSongsListAdapter(private val mContext: Context): RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: SongsListViewHolder, position: Int) {
-        holder.songNameTv.text = Utils.getStringWithValidLength(artistSongsList[position].songName,Constants.MAX_LENGTH_SONG_NAME)
-        holder.artistNameTv.text = Utils.getStringWithValidLength(artistSongsList[position].artistName,Constants.MAX_LENGTH_ARTIST_NAME)
+        holder.songNameTv.text = artistSongsList[position].songName
+        holder.artistNameTv.text = artistSongsList[position].artistName
         if(artistSongsList[position].isFavorite){
             holder.favoriteIconImgV.visibility = View.VISIBLE
         }else{

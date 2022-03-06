@@ -1,4 +1,4 @@
-package com.myspotify.data.remote
+package com.myspotify.data.remote.models
 
 data class Song(
     val checksum: String,

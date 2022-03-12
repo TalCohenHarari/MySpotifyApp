@@ -1,4 +1,4 @@
-package com.myspotify.presentation.ui.activity
+package com.myspotify.presentation.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

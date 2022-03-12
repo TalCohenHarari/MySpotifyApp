@@ -15,15 +15,15 @@ import com.myspotify.utils.Constants.NOTIFICATION_ID
 
 object Utils {
     fun makeToast(context: Context, msg:String){
-        Toast.makeText(context,msg, Toast.LENGTH_SHORT).show()
+        Toast.makeText(context,msg, Toast.LENGTH_LONG).show()
     }
 
     fun makeSnackbar(view: View, msg:String){
-        Snackbar.make(view,msg, Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(view,msg, Snackbar.LENGTH_LONG).show()
     }
 
     fun makeSnackbarWithAction(context: Context, view: View, actionName: String, actionColor : Int, msg:String){
-        val snackbar = Snackbar.make(view,msg, Snackbar.LENGTH_SHORT)
+        val snackbar = Snackbar.make(view,msg, Snackbar.LENGTH_LONG)
         snackbar.setAction(actionName, View.OnClickListener { snackbar.dismiss() })
             .setActionTextColor(ContextCompat.getColor(context, actionColor))
             .show()

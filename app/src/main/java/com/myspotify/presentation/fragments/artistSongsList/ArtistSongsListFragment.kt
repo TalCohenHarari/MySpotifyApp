@@ -1,4 +1,4 @@
-package com.myspotify.presentation.ui.fragments.artistSongsList
+package com.myspotify.presentation.fragments.artistSongsList
 
 import android.app.NotificationManager
 import android.os.Bundle
@@ -49,21 +49,22 @@ class ArtistSongsListFragment : Fragment() {
         artistSongsRecyclerView.setHasFixedSize(true)
         val manager = LinearLayoutManager(context)
         artistSongsRecyclerView.layoutManager = manager
-        artistSongsListAdapter = ArtistsSongsListAdapter(context!!)
+        artistSongsListAdapter = ArtistsSongsListAdapter(requireContext())
         artistSongsRecyclerView.adapter = artistSongsListAdapter
     }
 
     private fun subscribeToObservers() {
-        artistSongsListViewModel.getArtistSongsListFromDB().observe(viewLifecycleOwner, { data ->
+        artistSongsListViewModel.getArtistSongsListFromDB().observe(viewLifecycleOwner) { data ->
             artistSongsListAdapter.artistSongsList.clear()
             artistSongsListAdapter.artistSongsList.addAll(data)
             artistSongsListAdapter.notifyDataSetChanged()
-            if(data.isNotEmpty()) {
-                Glide.with(context!!).load(data[0].artistImageUrl).error(R.drawable.bg_music_default).into(binding.headerImageImgV)
+            if (data.isNotEmpty()) {
+                Glide.with(requireContext()).load(data[0].artistImageUrl)
+                    .error(R.drawable.bg_music_default).into(binding.headerImageImgV)
                 binding.titleTv.text = data[0].artistName
                 binding.titleTvSmall.text = data[0].artistName
             }
-        })
+        }
     }
 
     private fun listeners() {

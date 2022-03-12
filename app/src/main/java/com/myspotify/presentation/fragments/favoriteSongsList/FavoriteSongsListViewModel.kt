@@ -1,4 +1,4 @@
-package com.myspotify.presentation.ui.fragments.favoriteSongsList
+package com.myspotify.presentation.fragments.favoriteSongsList
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

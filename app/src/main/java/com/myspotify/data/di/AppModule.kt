@@ -34,9 +34,11 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideAppDataBase(@ApplicationContext applicationContext: Context):AppDatabase = Room.databaseBuilder(
+    fun provideAppDataBase(@ApplicationContext applicationContext: Context):AppDatabase =
+        Room.databaseBuilder(
             applicationContext,
             AppDatabase::class.java,
             "mySpotify.db"
-        ).build()
+        ) .fallbackToDestructiveMigration()
+            .build()
 }

@@ -1,4 +1,4 @@
-package com.myspotify.presentation.ui.fragments.songDetails
+package com.myspotify.presentation.fragments.songDetails
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

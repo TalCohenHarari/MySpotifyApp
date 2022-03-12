@@ -5,20 +5,28 @@ import com.myspotify.data.local.AppDatabase
 import com.myspotify.data.local.entity.SongDB
 import com.myspotify.data.remote.MySpotifyApi
 import com.myspotify.data.remote.models.Data
+import com.myspotify.data.remote.models.Song
 import com.myspotify.utils.Constants
+import com.myspotify.utils.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class SongsRepository @Inject constructor(private val api: MySpotifyApi, private val db: AppDatabase) {
 
-    suspend fun getSongsListFromServer(){
-        withContext(Dispatchers.IO){
-            val response = api.getPlaylist(Constants.API_DATA_ID,Constants.API_DATA_LIMITATION)
-            if(response.isSuccessful){
-                response.body()?.let {
-                    saveSongsListOnDB(convertDataFromServer(it.data))
+    suspend fun getSongsListFromServer(): Resource<Song> {
+       return  withContext(Dispatchers.IO){
+            try {
+                val response = api.getPlaylist(Constants.API_DATA_ID,Constants.API_DATA_LIMITATION)
+                val result = response.body()
+                if(response.isSuccessful && result!= null){
+                    saveSongsListOnDB(convertDataFromServer(result.data))
+                    Resource.Success(result)
+                }else{
+                    Resource.Error(response.message())
                 }
+            } catch (e: Exception) {
+                Resource.Error(e.message?:"An error occurred")
             }
         }
     }

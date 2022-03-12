@@ -1,7 +1,6 @@
-package com.myspotify.presentation.ui.fragments.artistsList
+package com.myspotify.presentation.activity
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.myspotify.data.local.entity.SongDB
@@ -11,18 +10,19 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ArtistsListViewModel @Inject constructor(private val songsRepository : SongsRepository) : ViewModel() {
+class MainViewModel @Inject constructor(private val songsRepository : SongsRepository): ViewModel() {
 
-    val artistsList: LiveData<List<SongDB>> = songsRepository.getArtistListFromDB()
+    lateinit var  songsList : LiveData<List<SongDB>>
 
     init {
-        viewModelScope.launch{
+        viewModelScope.launch {
+            songsList = songsRepository.getSongsListFromDB()
             songsRepository.getSongsListFromServer()
         }
     }
 
     fun getSongsListFromDB(): LiveData<List<SongDB>> {
-        return artistsList
+        return songsList
     }
 
 }

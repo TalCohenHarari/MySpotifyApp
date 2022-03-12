@@ -1,4 +1,4 @@
-package com.myspotify.presentation.ui.fragments.favoriteSongsList
+package com.myspotify.presentation.fragments.favoriteSongsList
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -51,7 +51,7 @@ class FavoriteSongsListFragment : Fragment() {
         songsRecyclerView.setHasFixedSize(true)
         val manager = LinearLayoutManager(context)
         songsRecyclerView.layoutManager = manager
-        favoriteSongsListAdapter = FavoriteSongsListAdapter(context!!)
+        favoriteSongsListAdapter = FavoriteSongsListAdapter(requireContext())
         val callback = MyItemTouchHelper(favoriteSongsListAdapter)
         val itemTouchHelper = ItemTouchHelper(callback)
         favoriteSongsListAdapter.setTouchHelper(itemTouchHelper)
@@ -61,19 +61,19 @@ class FavoriteSongsListFragment : Fragment() {
         //SwipeSong RecyclerView
         swipeRecyclerView = binding.swipeSongRecyclerView
         swipeRecyclerView.setHasFixedSize(true)
-        val swipeManager = LinearLayoutManager(context!!, LinearLayoutManager.HORIZONTAL, false)
+        val swipeManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         swipeRecyclerView.layoutManager = swipeManager
-        swipeSongAdapter = SwipeSongAdapter(context!!)
+        swipeSongAdapter = SwipeSongAdapter(requireContext())
         swipeRecyclerView.adapter = swipeSongAdapter
         val linearSnapHelper: LinearSnapHelper = SnapHelperOneByOne()
         linearSnapHelper.attachToRecyclerView(swipeRecyclerView)
     }
 
     private fun subscribeToObservers() {
-        favoriteSongsListViewModel.getSongsListFromDB().observe(viewLifecycleOwner, { data ->
+        favoriteSongsListViewModel.getSongsListFromDB().observe(viewLifecycleOwner) { data ->
             favoriteSongsListAdapter.notifyNewList(data)
             swipeSongAdapter.notifyNewList(data)
-        })
+        }
     }
 
     private fun listeners() {

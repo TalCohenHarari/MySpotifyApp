@@ -1,12 +1,9 @@
-package com.myspotify.presentation.ui.fragments.artistsList
+package com.myspotify.presentation.fragments.artistsList
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.app.ActivityCompat.recreate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -14,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.myspotify.databinding.FragmentArtistsListBinding
 import com.myspotify.presentation.adapters.ArtistsListAdapter
+import com.myspotify.utils.Utils
 import com.myspotify.utils.autoCleared
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -43,16 +41,22 @@ class ArtistsListFragment : Fragment() {
         artistsRecyclerView.setHasFixedSize(true)
         val manager = GridLayoutManager(context, 2)
         artistsRecyclerView.layoutManager = manager
-        artistsListAdapter = ArtistsListAdapter(context!!)
+        artistsListAdapter = ArtistsListAdapter(requireContext())
         artistsRecyclerView.adapter = artistsListAdapter
     }
 
     private fun subscribeToObservers() {
-        songsListViewModel.getSongsListFromDB().observe(viewLifecycleOwner, { data ->
+        songsListViewModel.getSongsListFromDB().observe(viewLifecycleOwner) { data ->
             artistsListAdapter.songsList.clear()
             artistsListAdapter.songsList.addAll(data)
             artistsListAdapter.notifyDataSetChanged()
-        })
+        }
+
+        songsListViewModel.getMessage().observe(viewLifecycleOwner) { message ->
+            context?.let {
+                Utils.makeToast(it, message)
+            }
+        }
     }
 
     private fun listeners() {

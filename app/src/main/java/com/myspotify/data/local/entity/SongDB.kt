@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-class SongDB(
+data class SongDB(
     @PrimaryKey
     var id: Int,
     var artistId: Int,

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     app:layoutDescription="@xml/fragment_artist_songs_list_scene"
-    tools:context=".presentation.ui.fragments.artistSongsList.ArtistSongsListFragment">
+    tools:context=".presentation.fragments.artistSongsList.ArtistSongsListFragment">
 
     <ImageView
         android:id="@+id/headerImage_imgV"
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="8dp"
-        android:text="Artist Name"
+        android:text="@string/artist_name"
         android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold"

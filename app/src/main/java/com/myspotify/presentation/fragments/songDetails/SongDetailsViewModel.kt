@@ -1,7 +1,6 @@
-package com.myspotify.presentation.ui.fragments.songDetails
+package com.myspotify.presentation.fragments.songDetails
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.myspotify.data.local.entity.SongDB

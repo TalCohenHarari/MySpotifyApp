@@ -6,7 +6,7 @@
     app:startDestination="@id/nav_artistsListFragment">
     <fragment
         android:id="@+id/nav_artistsListFragment"
-        android:name="com.myspotify.presentation.ui.fragments.artistsList.ArtistsListFragment"
+        android:name="com.myspotify.presentation.fragments.artistsList.ArtistsListFragment"
         android:label=" "
         tools:layout="@layout/fragment_artists_list" >
         <action
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_songDetailsFragment"
-        android:name="com.myspotify.presentation.ui.fragments.songDetails.SongDetailsFragment"
+        android:name="com.myspotify.presentation.fragments.songDetails.SongDetailsFragment"
         android:label=" "
         tools:layout="@layout/fragment_song_details" >
         <argument
@@ -28,12 +28,12 @@
     </fragment>
     <fragment
         android:id="@+id/nav_favoriteSongsListFragment"
-        android:name="com.myspotify.presentation.ui.fragments.favoriteSongsList.FavoriteSongsListFragment"
+        android:name="com.myspotify.presentation.fragments.favoriteSongsList.FavoriteSongsListFragment"
         android:label=" "
         tools:layout="@layout/fragment_favorite_songs_list" />
     <fragment
         android:id="@+id/nav_artistSongsListFragment"
-        android:name="com.myspotify.presentation.ui.fragments.artistSongsList.ArtistSongsListFragment"
+        android:name="com.myspotify.presentation.fragments.artistSongsList.ArtistSongsListFragment"
         android:label=" "
         tools:layout="@layout/fragment_artist_songs_list" >
         <argument

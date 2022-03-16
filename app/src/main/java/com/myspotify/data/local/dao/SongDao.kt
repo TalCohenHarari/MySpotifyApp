@@ -19,7 +19,7 @@ interface SongDao {
     fun getAllArtistSongs(artistId: Int): LiveData<List<SongDB>>
 
     @Query("select * from SongDB where id = :songId")
-    fun getById(songId: Int): SongDB?
+    suspend fun getById(songId: Int): SongDB?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(song: SongDB)

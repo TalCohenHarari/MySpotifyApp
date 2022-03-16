@@ -22,7 +22,7 @@
         android:label=" "
         tools:layout="@layout/fragment_song_details" >
         <argument
-            android:name="position"
+            android:name="songId"
             app:argType="integer"
             android:defaultValue="-1" />
     </fragment>
@@ -30,7 +30,11 @@
         android:id="@+id/nav_favoriteSongsListFragment"
         android:name="com.myspotify.presentation.fragments.favoriteSongsList.FavoriteSongsListFragment"
         android:label=" "
-        tools:layout="@layout/fragment_favorite_songs_list" />
+        tools:layout="@layout/fragment_favorite_songs_list" >
+        <action
+            android:id="@+id/action_nav_favoriteSongsListFragment_to_nav_songDetailsFragment"
+            app:destination="@id/nav_songDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_artistSongsListFragment"
         android:name="com.myspotify.presentation.fragments.artistSongsList.ArtistSongsListFragment"

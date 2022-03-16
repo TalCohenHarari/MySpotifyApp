@@ -2,27 +2,23 @@ package com.myspotify.presentation.fragments.songDetails
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.myspotify.data.local.entity.SongDB
 import com.myspotify.data.repository.SongsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SongDetailsViewModel @Inject constructor(private val songsRepository : SongsRepository): ViewModel() {
+class SongDetailsViewModel @Inject constructor(songsRepository : SongsRepository): ViewModel() {
 
-     private lateinit var  songsList : LiveData<List<SongDB>>
+     private var  songsList : LiveData<List<SongDB>> = songsRepository.getSongsListFromDB()
 
-    init {
-        viewModelScope.launch {
-            songsList = songsRepository.getSongsListFromDB()
-        }
+    fun getSongsList(): LiveData<List<SongDB>> {
+        return songsList
     }
 
-    fun getSongById(id:Int): SongDB? {
-        for (song in songsList.value!!){
-            if(song.id == id) {
+    fun getSongById(songId:Int): SongDB? {
+        songsList.value!!.forEach { song ->
+            if(song.id == songId) {
                 return song
             }
         }

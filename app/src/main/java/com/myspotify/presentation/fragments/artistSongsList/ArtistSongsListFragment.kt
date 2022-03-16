@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.myspotify.R
+import com.myspotify.data.local.entity.SongDB
 import com.myspotify.databinding.FragmentArtistSongsListBinding
 import com.myspotify.presentation.adapters.ArtistsSongsListAdapter
 import com.myspotify.presentation.dialogs.SongBottomSheetDialogFragment
@@ -58,12 +59,16 @@ class ArtistSongsListFragment : Fragment() {
             artistSongsListAdapter.artistSongsList.clear()
             artistSongsListAdapter.artistSongsList.addAll(data)
             artistSongsListAdapter.notifyDataSetChanged()
-            if (data.isNotEmpty()) {
-                Glide.with(requireContext()).load(data[0].artistImageUrl)
-                    .error(R.drawable.bg_music_default).into(binding.headerImageImgV)
-                binding.titleTv.text = data[0].artistName
-                binding.titleTvSmall.text = data[0].artistName
-            }
+            showFirstSongOnUi(data)
+        }
+    }
+
+    private fun showFirstSongOnUi(data: List<SongDB>) {
+        if (data.isNotEmpty()) {
+            Glide.with(requireContext()).load(data[0].artistImageUrl)
+                .error(R.drawable.bg_music_default).into(binding.headerImageImgV)
+            binding.titleTv.text = data[0].artistName
+            binding.titleTvSmall.text = data[0].artistName
         }
     }
 

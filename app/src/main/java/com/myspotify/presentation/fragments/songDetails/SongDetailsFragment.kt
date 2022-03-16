@@ -20,19 +20,28 @@ class SongDetailsFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentSongDetailsBinding.inflate(inflater, container, false)
+        subscribeToObservers()
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val position = SongDetailsFragmentArgs.fromBundle(requireArguments()).position
-        if(position != -1) {
-            val songDB = songDetailsViewModel.getSongById(position)
-                songDB?.apply {
-                    Glide.with(requireContext()).load(this.artistImageUrl).error(R.drawable.bg_music_default).into(binding.songImageImgV)
-                    binding.songNameTv.text = this.songName
-                    binding.artistNameTv.text = this.artistName
-                }
+    private fun subscribeToObservers() {
+        songDetailsViewModel.getSongsList().observe(viewLifecycleOwner){
+            getSongDetails()
+        }
+    }
+
+    private fun getSongDetails(){
+        val songId = SongDetailsFragmentArgs.fromBundle(requireArguments()).songId
+        if(songId != -1) {
+            val songDB = songDetailsViewModel.getSongById(songId)
+            songDB?.let {
+                Glide.with(requireContext())
+                    .load(it.artistImageUrl)
+                    .error(R.drawable.bg_music_default)
+                    .into(binding.songImageImgV)
+                binding.songNameTv.text = it.songName
+                binding.artistNameTv.text = it.artistName
+            }
         }
     }
 }

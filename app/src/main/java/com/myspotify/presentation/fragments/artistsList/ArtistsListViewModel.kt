@@ -19,8 +19,8 @@ class ArtistsListViewModel @Inject constructor(private val songsRepository : Son
 
     init {
         viewModelScope.launch{
-            when(songsRepository.getSongsListFromServer()){
-                is Resource.Error -> toast.value = "Failed"
+            when(val result = songsRepository.getSongsListFromServer()){
+                is Resource.Error -> { toast.value = result.message ?:  "Failed" }
                 else -> toast.value =  "Success"
             }
         }
